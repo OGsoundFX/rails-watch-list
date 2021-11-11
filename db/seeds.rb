@@ -34,3 +34,5 @@ puts "Creating bookmarks"
 end
 
 puts "Created #{Bookmark.count} bookmarks"
+
+# Testing seeding with TMDB API
