@@ -1,0 +1,11 @@
+<div class="container">
+  <%= @list.name %>
+  <% if !@list.movies.empty? %>
+    <ul>
+      <% @list.movies.each do |movie| %>
+        <%= movie.title %>
+        <%= image_tag movie.poster_url %>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

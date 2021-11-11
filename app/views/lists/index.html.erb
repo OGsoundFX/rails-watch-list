@@ -1,10 +1,25 @@
-<h1>Lists</h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/dk9a86uhu/image/upload/v1636642178/krvbal8e1sawpf11noa11xnvazc0.jpg);">
+  <div class="container">
+    <h1>Create Your Movies Watch Lists !</h1>
+    <h3 class="typed-js"></h3>
+    <a href="/lists/new" alt="link to new list">
+      <button type="button" class="btn btn-success" style="color: white">New List</button>
+    </a>
+  </div>
+</div>
+
 <ul>
   <% @lists.each do |list| %>
   <li>
-    <%= list.name %>
-    <img src="<%= list.movies.first.poster_url %>" style="width: 200px" alt="">
+    <%= link_to list.name, list_path(list) %>
+    <% if list.movies == [] %>
+      <img src="https://res.cloudinary.com/dk9a86uhu/image/upload/v1636642178/krvbal8e1sawpf11noa11xnvazc0.jpg" style="width: 200px" alt="">
+    <% else %>
+      <img src="<%= list.movies.first.poster_url %>" style="width: 200px" alt="">
+    <% end %>
     <%= link_to 'delete list', list_path(list), method: :delete %>
   </li>
   <% end %>
 </ul>
+
+<%= image_tag 'https://res.cloudinary.com/dk9a86uhu/image/upload/v1636642178/krvbal8e1sawpf11noa11xnvazc0.jpg' %>
