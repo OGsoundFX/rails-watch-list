@@ -1,0 +1,10 @@
+<h1>Lists</h1>
+<ul>
+  <% @lists.each do |list| %>
+  <li>
+    <%= list.name %>
+    <img src="<%= list.movies.first.poster_url %>" style="width: 200px" alt="">
+    <%= link_to 'delete list', list_path(list), method: :delete %>
+  </li>
+  <% end %>
+</ul>
