@@ -5,6 +5,8 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    @bookmark = Bookmark.new
+    @movies = Movie.all
   end
 
   def new
@@ -21,7 +23,8 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    List.find(params[:id]).delete
+    List.find(params[:id]).destroy
+    redirect_to root_path
   end
 
   private
