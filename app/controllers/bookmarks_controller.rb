@@ -8,6 +8,8 @@ class BookmarksController < ApplicationController
     if new_bookmark.save
       redirect_to list_path(params[:list_id])
     else
+      # flash[:notice] = "wrong entry try again"
+      flash[:notice] = new_bookmark.errors.full_messages.to_sentence
       redirect_to list_path(params[:list_id])
     end
   end
