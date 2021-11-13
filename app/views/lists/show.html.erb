@@ -1,10 +1,12 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @list.photo.url %>);">
   <div class="container">
     <h1><%= @list.name%></h1>
+    <h3 class="typed-js"></h3>
   </div>
 </div>
 <div class="container">
   <%= simple_form_for [@list, @bookmark] do |f| %>
+  <%= f.label "Movie" %>
     <%= f.association :movie %>
     <%= f.input :comment %>
     <%= f.submit "Add movie" %>
@@ -17,4 +19,11 @@
       <% end %>
     </ul>
   <% end %>
+
+  <select class="select" name="select">
+    <option value="AL">Alabama</option>
+    <option value="WY">Wyoming</option>
+    <option value="NY">New-York</option>
+    <option value="CA">California</option>
+  </select>
 </div>
