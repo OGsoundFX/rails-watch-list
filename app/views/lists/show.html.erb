@@ -6,8 +6,7 @@
 </div>
 <div class="container">
   <%= simple_form_for [@list, @bookmark] do |f| %>
-  <%= f.label "Movie" %>
-    <%= f.association :movie %>
+    <%= f.association :movie, as: :select2, input_html: { class: "drop-down"} %>
     <%= f.input :comment %>
     <%= f.submit "Add movie" %>
   <% end %>
@@ -19,11 +18,4 @@
       <% end %>
     </ul>
   <% end %>
-
-  <select class="select" name="select">
-    <option value="AL">Alabama</option>
-    <option value="WY">Wyoming</option>
-    <option value="NY">New-York</option>
-    <option value="CA">California</option>
-  </select>
 </div>
