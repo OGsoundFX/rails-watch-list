@@ -3,12 +3,15 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+//= require select2_simple_form
+
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "bootstrap"
 import { initTyped } from './plugins/init_typedjs'
+import { initiateSelect2 } from './plugins/init_select2'
 
 Rails.start()
 Turbolinks.start()
@@ -16,4 +19,5 @@ ActiveStorage.start()
 
 document.addEventListener('turbolinks:load', () => {
   initTyped();
+  initiateSelect2();
 });
