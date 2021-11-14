@@ -39,8 +39,12 @@ document.addEventListener('turbolinks:load', () => {
   initiateSelect2();
 });
 ```
-
 <br>
+
+**Intermediary Step** <br>
+*Select2* comes with styling files stored in the package. To implement the css file, include the following line in your ``` application.scss ``` file: <br>
+``` @import 'select2/dist/css/select2'; ```
+<br><br>
 
 **Step 5:**
 Implement *select2* in your Application with a simple ```<select> </select>``` tag: <br>
