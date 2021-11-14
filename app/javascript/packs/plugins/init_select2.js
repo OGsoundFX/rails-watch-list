@@ -7,5 +7,4 @@ const initiateSelect2 = () => {
   });
 }
 
-
 export { initiateSelect2 }
