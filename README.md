@@ -4,6 +4,13 @@
 [Select2 - Official Website](https://select2.org/)<br>
 [Le Wagon instructions](https://kitt.lewagon.com/knowledge/tutorials/select2) <br>
 
+## Files requiring your intervention:
+- ``` ini_select2.js ``` *(needs to be created, see bellow)*
+- ``` application.js ```
+- Your ```view.html.erb``` file where you will be implementing your drop-down menu
+- ``` Gemfile```
+- ```application.scss```
+
 ## Javascript plugin installation and implementation
 
 **Step 1:** <br>
