@@ -7,7 +7,9 @@
     </a>
   </div>
 </div>
-
+<% if user_signed_in? %>
+  <button><%= link_to 'Log out', destroy_user_session_path, method: :delete %></button>
+<% end %>
 <div class="container-fluid index-box">
   <ul>
     <% @lists.each do |list| %>
