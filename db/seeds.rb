@@ -69,6 +69,13 @@
 Bookmark.destroy_all
 Movie.destroy_all
 List.destroy_all
+User.destroy_all
+
+puts "Creating Initial User if doesn't exist"
+
+initial_user = User.create(email: "bob@gmail.com", password: '123456', username: 'OGsoundFX')
+
+puts "#{initial_user.username} is present in Database"
 
 url = "http://tmdb.lewagon.com/movie/top_rated"
 base_poster_url = "https://image.tmdb.org/t/p/original"
@@ -85,7 +92,6 @@ JSON.parse(open(url).read)['results'].each do |movie|
 end
 
 n = 2
-# puts JSON.parse(open("#{url}?page=2").read)
 (number_of_files.to_i - 1).times do
   JSON.parse(open("#{url}?page=#{n}").read)['results'].each do |movie|
     Movie.create(
@@ -103,7 +109,7 @@ puts "#{Movie.count} have been created"
 categories = ['horror', 'fun', 'thriller', 'weekend', 'historic']
 
 categories.each do |cat|
-  List.create(name: cat)
+  List.create(name: cat, user_id: initial_user.id)
 end
 
 puts "Created #{List.count} lists"

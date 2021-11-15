@@ -1,0 +1,49 @@
+<div class="container-fluid index-box">
+  <ul>
+    <% @lists.each do |list| %>
+    <div class="list-card">
+      <li>
+        <div class="d-flex justify-content-between">
+          
+          <div class="d-flex justify-content-start">
+            <div>
+              <% if list.movies == [] %>
+                <div class="image-relative">
+                  <img src="https://res.cloudinary.com/dk9a86uhu/image/upload/v1636642178/krvbal8e1sawpf11noa11xnvazc0.jpg" style="width: 200px" alt="">
+                  <h3 class="list-title"><%= list.name %></h3>
+                </div>
+              <% else %>
+                <div class="image-relative">
+                  <img src="<%= list.movies.first.poster_url %>" style="width: 200px" alt="">
+                  <h3 class="list-title"><%= list.name %></h3>
+                </div>
+              <% end %>
+            </div>
+              
+            <div class="user-name-box align-self-center">
+              <h6><strong><%= list.user.username %></strong></h6>
+              <p><%= pluralize(list.movies.count, 'movie') %></p>
+            </div>
+          </div>
+
+          <div class="list-description-card">
+            <p class="limit-text"><%= list.description %></p>
+          </div>
+            
+          <div class="d-flex align-items-end flex-column button-margins">
+            <div>
+              <%= link_to 'View', list_path(list), class: "btn btn-success button-width button-margin-bottom" %>
+            </div>
+            <div>
+              <% if user_signed_in? && current_user.id == list.user_id %>
+                <%= link_to 'Delete', list_path(list), method: :delete, class: "btn btn-danger button-width" %>
+              <% end %>
+            </div>
+          </div>
+
+        </div>
+      </li>
+    </div>
+    <% end %>
+  </ul>
+</div>
