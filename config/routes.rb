@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'video_clubs/index'
+  get 'video_clubs/show'
   devise_for :users
   get 'bookmarks/new'
   get 'bookmarks/create'
@@ -8,4 +10,5 @@ Rails.application.routes.draw do
   resources :lists do
     resources :bookmarks, only: [:new, :create]
   end
+  resources :video_clubs, only: [:index, :show]
 end
