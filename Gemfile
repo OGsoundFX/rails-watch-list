@@ -57,3 +57,4 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'cloudinary', '~> 1.16.0'
 gem 'select2_simple_form', github: 'lndl/select2_simple_form', tag: '0.7.3'
 gem 'devise'
+gem 'pundit'
