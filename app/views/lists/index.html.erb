@@ -10,38 +10,5 @@
 <% if user_signed_in? %>
   <button><%= link_to 'Log out', destroy_user_session_path, method: :delete %></button>
 <% end %>
-<div class="container-fluid index-box">
-  <ul>
-    <% @lists.each do |list| %>
-    <div class="list-card">
-      <li>
-        <div class="d-flex justify-content-between">
-          <div class="d-flex justify-content-start">
-            <div>
-              <% if list.movies == [] %>
-              <img src="https://res.cloudinary.com/dk9a86uhu/image/upload/v1636642178/krvbal8e1sawpf11noa11xnvazc0.jpg" style="width: 200px" alt="">
-              <% else %>
-              <img src="<%= list.movies.first.poster_url %>" style="width: 200px" alt="">
-              <% end %>
-            </div>
-            <div>
-              <h3><%= list.name %></h3>
-              <p>Number of movies: <%= list.movies.count %></p>
-            </div>
-          </div>
-          <div>
-            <div class="d-flex align-items-end flex-column button-margins">
-              <div>
-                <%= link_to 'View', list_path(list), class: "btn btn-success button-width button-margin-bottom" %>
-              </div>
-              <div>
-                <%= link_to 'Delete', list_path(list), method: :delete, class: "btn btn-danger button-width" %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </li>
-    </div>
-    <% end %>
-  </ul>
-</div>
+
+<%= render 'shared/list-cards' %>
