@@ -13,6 +13,7 @@ import "bootstrap"
 import { initTyped } from './plugins/init_typedjs'
 import { initiateSelect2 } from './plugins/init_select2'
 
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
@@ -21,3 +22,6 @@ document.addEventListener('turbolinks:load', () => {
   initTyped();
   initiateSelect2();
 });
+
+import "controllers"
+import "bootstrap"
