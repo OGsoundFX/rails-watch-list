@@ -1,3 +1,8 @@
+.navbar {
+  position: fixed;
+  width: 100%;
+}
+
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
@@ -7,6 +12,6 @@
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-lewagon img {
   width: 40px;
 }
