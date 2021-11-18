@@ -1,5 +1,10 @@
 <div class="container">
-  <h1>Add a new movie</h1>
+  <div class="d-flex justify-content-between" style="margin-top: 24px;">
+    <h1>Add a new movie</h1>
+    <div>
+      <%= link_to "Back", movies_path, class: "btn btn-info" %>
+    </div>
+  </div>
   <%= simple_form_for @movie do |f| %>
     <%= f.input :title %>
     <%= f.input :overview %>
