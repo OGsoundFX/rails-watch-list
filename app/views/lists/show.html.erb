@@ -5,9 +5,16 @@
   </div>
 </div>
 <div class="container">
-  <% if current_user == @list.user || @list.user.admin? %>
-    <%= link_to 'Delete', list_path(@list), method: :delete, class: "btn btn-danger button-width" %>
-  <% end %>
+  <div class="d-flex justify-content-between" style="margin: 24px 0;">
+    <div>
+      <% if current_user == @list.user || @list.user.admin? %>
+        <%= link_to 'Delete', list_path(@list), method: :delete, class: "btn btn-danger button-width" %>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to "Back", root_path, class: "btn btn-info" %>
+    </div>
+  </div>
   <%= simple_form_for [@list, @bookmark] do |f| %>
     <%= f.association :movie, as: :select2, input_html: { class: "drop-down"} %>
     <%= f.input :comment %>

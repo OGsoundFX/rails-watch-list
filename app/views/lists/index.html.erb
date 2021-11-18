@@ -2,13 +2,18 @@
   <div class="container">
     <h1>Create Your Movies Watch Lists !</h1>
     <h3 class="typed-js"></h3>
-    <a href="/lists/new" alt="link to new list">
+    <%# <a href="/lists/new" alt="link to new list">
       <button type="button" class="btn btn-success" style="color: white">New List</button>
-    </a>
+    </a> %>
+
+      <div>
+        <%= link_to 'New List', new_list_path, class: "btn btn-success", style: "color: white; margin-bottom: 12px;" %>
+      </div>
+      <div>
+        <%= link_to 'See All films', movies_path, class: "btn btn-info", style: "color: white" %>
+      </div>
+
   </div>
 </div>
-<% if user_signed_in? %>
-  <button><%= link_to 'Log out', destroy_user_session_path, method: :delete %></button>
-<% end %>
 
 <%= render 'shared/list-cards' %>

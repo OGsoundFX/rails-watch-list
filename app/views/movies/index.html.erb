@@ -1,6 +1,13 @@
 <div class="container">
-  <h1>List of movies</h1>
-  <h3><%= link_to "Add new movie", new_movie_path %></h3>
+  <div class="d-flex justify-content-between" style="margin-top: 24px;">
+    <div>
+      <h1>List of movies</h1>
+    </div>
+    <div>
+      <%= link_to "Back", root_path, class: "btn btn-info" %>
+    </div>
+  </div>
+  <h3><%= link_to "Add new movie", new_movie_path, class: "btn btn-success", id: "add-new-movie-button" %></h3>
   <ul>
     <% @movies.each do |movie| %>
       <li>
