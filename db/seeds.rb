@@ -110,6 +110,15 @@ end
 
 puts "#{Movie.count} have been created"
 
+puts "adding Return of the Jedi and The Empire strikes back into the Star Wars collection"
+empire = Movie.where("title ILIKE '%the empire strikes back%'")[0]
+empire.title = "Star Wars The Empire Strikes Back"
+empire.save
+jedi = Movie.where("title ILIKE '%return of the jedi%'")[0]
+jedi.title = "Star Wars Return of the Jedi"
+jedi.save
+puts "Star Wars done"
+
 categories = ['horror', 'fun', 'thriller', 'weekend', 'historic']
 
 categories.each do |cat|
