@@ -10,19 +10,35 @@
       <%= link_to "Back", root_path, class: "btn btn-info" %>
     </div>
   </div>
+  <div class="search-form">
+    <%= form_tag movies_path, method: :get do %>
+      <div class="d-flex">
+        <div>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Find a movie"
+          %>
+        </div>
+        <div>
+          <%= submit_tag "Search", class: "btn btn-success" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
   <div class="d-flex justify-content-start">
     <p>Display by:</p>
     <div>
-      <%= link_to "Alphabetical", movies_path(order: "alpha", type: @order), class: "order-buttons" %>
+      <%= link_to "Alphabetical", movies_path(order: "alpha", type: @order, query: @query), class: "order-buttons" %>
     </div>
     <div>
-      <%= link_to "Rating", movies_path(order: "rating", type: @order), class: "order-buttons" %>
+      <%= link_to "Rating", movies_path(order: "rating", type: @order, query: @query), class: "order-buttons" %>
     </div>
     <div>
-      <%= link_to "Popularity", movies_path(order: "pop", type: @order), class: "order-buttons" %>
+      <%= link_to "Popularity", movies_path(order: "pop", type: @order, query: @query), class: "order-buttons" %>
     </div>
     <div>
-      <%= link_to "Realease year", movies_path(order: "date", type: @order), class: "order-buttons" %>
+      <%= link_to "Realease year", movies_path(order: "date", type: @order, query: @query), class: "order-buttons" %>
     </div>
   </div>
   <ul>

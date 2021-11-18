@@ -3,40 +3,85 @@ class MoviesController < ApplicationController
     # raise unless request.referer == "http://localhost:3000/"
     # @movies = Movie.all
     @order = "default"
-    if params[:order] == "alpha"
-      if params[:type] == "default" || params[:type] == "title_desc"
-        @movies = policy_scope(Movie).order(title: :asc)
-        @order = "title_asc"
+    @query = ""
+    
+    if params[:query].present?
+      @query = params[:query]
+      if params[:order] == "alpha"
+        if params[:type] == "default" || params[:type] == "title_desc"
+          @movies = policy_scope(Movie).search_movies(params[:query]).reorder(title: :asc)
+          @order = "title_asc"
+        else
+          @movies = policy_scope(Movie).search_movies(params[:query]).reorder(title: :desc)
+          @order = "title_desc"
+        end
+      elsif params[:order] == "rating"
+        if params[:type] == "default" || params[:type] == "rating_desc"
+          @movies = policy_scope(Movie).search_movies(params[:query]).reorder(rating: :asc)
+          @order = "rating_asc"
+        else
+          @movies = policy_scope(Movie).search_movies(params[:query]).reorder(rating: :desc)
+          @order = "rating_desc"
+        end
+      elsif params[:order] == "pop"
+        if params[:type] == "default" || params[:type] == "popularity_desc"
+          @movies = policy_scope(Movie).search_movies(params[:query]).reorder(popularity: :asc)
+          @order = "popularity_asc"
+        else
+          @movies = policy_scope(Movie).search_movies(params[:query]).reorder(popularity: :desc)
+          @order = "popularity_desc"
+        end
+      elsif params[:order] == "date"
+        if params[:type] == "default" || params[:type] == "date_desc"
+          @movies = policy_scope(Movie).search_movies(params[:query]).reorder(release_date: :asc)
+          @order = "date_asc"
+        else
+          @movies = policy_scope(Movie).search_movies(params[:query]).reorder(release_date: :desc)
+          @order = "date_desc"
+        end
       else
-        @movies = policy_scope(Movie).order(title: :desc)
-        @order = "title_desc"
+        @movies = policy_scope(Movie).search_movies(params[:query])
       end
-    elsif params[:order] == "rating"
-      if params[:type] == "default" || params[:type] == "rating_desc"
-        @movies = policy_scope(Movie).order(rating: :asc)
-        @order = "rating_asc"
-      else
-        @movies = policy_scope(Movie).order(rating: :desc)
-        @order = "rating_desc"
-      end
-    elsif params[:order] == "pop"
-      if params[:type] == "default" || params[:type] == "popularity_desc"
-        @movies = policy_scope(Movie).order(popularity: :asc)
-        @order = "popularity_asc"
-      else
-        @movies = policy_scope(Movie).order(popularity: :desc)
-        @order = "popularity_desc"
-      end
-    elsif params[:order] == "date"
-      if params[:type] == "default" || params[:type] == "date_desc"
-        @movies = policy_scope(Movie).order(release_date: :asc)
-        @order = "date_asc"
-      else
-        @movies = policy_scope(Movie).order(release_date: :desc)
-        @order = "date_desc"
-      end
+
     else
-      @movies = policy_scope(Movie)
+      if params[:query] == "" || !params[:query].present?
+        if params[:order] == "alpha"
+          raise
+          if params[:type] == "default" || params[:type] == "title_desc"
+            @movies = policy_scope(Movie).order(title: :asc)
+            @order = "title_asc"
+          else
+            @movies = policy_scope(Movie).order(title: :desc)
+            @order = "title_desc"
+          end
+        elsif params[:order] == "rating"
+          if params[:type] == "default" || params[:type] == "rating_desc"
+            @movies = policy_scope(Movie).order(rating: :asc)
+            @order = "rating_asc"
+          else
+            @movies = policy_scope(Movie).order(rating: :desc)
+            @order = "rating_desc"
+          end
+        elsif params[:order] == "pop"
+          if params[:type] == "default" || params[:type] == "popularity_desc"
+            @movies = policy_scope(Movie).order(popularity: :asc)
+            @order = "popularity_asc"
+          else
+            @movies = policy_scope(Movie).order(popularity: :desc)
+            @order = "popularity_desc"
+          end
+        elsif params[:order] == "date"
+          if params[:type] == "default" || params[:type] == "date_desc"
+            @movies = policy_scope(Movie).order(release_date: :asc)
+            @order = "date_asc"
+          else
+            @movies = policy_scope(Movie).order(release_date: :desc)
+            @order = "date_desc"
+          end
+        else
+          @movies = policy_scope(Movie)
+        end
+      end
     end
   end
 
