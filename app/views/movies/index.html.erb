@@ -4,14 +4,34 @@
       <h1>List of movies</h1>
     </div>
     <div>
+      <%= link_to "Add new movie", new_movie_path, class: "btn btn-success", id: "add-new-movie-button" %>
+    </div>
+    <div>
       <%= link_to "Back", root_path, class: "btn btn-info" %>
     </div>
   </div>
-  <h3><%= link_to "Add new movie", new_movie_path, class: "btn btn-success", id: "add-new-movie-button" %></h3>
+  <div class="d-flex justify-content-start">
+    <p>Display by:</p>
+    <div>
+      <%= link_to "Alphabetical", movies_path(order: "alpha", type: @order), class: "order-buttons" %>
+    </div>
+    <div>
+      <%= link_to "Rating", movies_path(order: "rating", type: @order), class: "order-buttons" %>
+    </div>
+    <div>
+      <%= link_to "Popularity", movies_path(order: "pop", type: @order), class: "order-buttons" %>
+    </div>
+    <div>
+      <%= link_to "Realease year", movies_path(order: "date", type: @order), class: "order-buttons" %>
+    </div>
+  </div>
   <ul>
     <% @movies.each do |movie| %>
       <li>
         <%= link_to movie.title, movie_path(movie) %>
+        / <%= movie.release_date %>
+        / <%= movie.rating %>
+        / <%= movie.popularity %>
       </li>
     <% end %>
   </ul>
