@@ -1,3 +1,7 @@
+* {
+  transition: all 0.5s ease;
+}
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -9,14 +13,20 @@ ul {
 }
 
 .list-card {
-  background-color: white;
-  // border: grey solid 1px;
-  border-radius: 4px;
-  box-shadow: 4px 4px 8px rgba(0,0,0,0.2);
+  // top: 0px;
+  left: 0px;
+  position: relative;
   width: 80%;
+  background-color: white;
+  border-radius: 4px;
   margin: 20px auto;
-  img {
-    margin: 12px;
-    border-radius: 4px;
+  box-shadow: 4px 4px 8px rgba(0,0,0,0.2);
+  text-decoration: none;
+  z-index: 0;
+  overflow: hidden;
+  &:hover {
+    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+    // top: -8px;
+    left: -8px;
   }
 }
