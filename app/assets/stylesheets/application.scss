@@ -20,6 +20,9 @@
 @import 'mapbox-gl/dist/mapbox-gl';
 @import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder';
 
+// Design related files
+@import 'fonts-and-colors';
+
 body {
-  background-color: rgb(233, 233, 233);
+  background-color: white;
 }

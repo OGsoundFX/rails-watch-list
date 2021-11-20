@@ -1,3 +1,17 @@
+$pinky: #f39cc7;
+
+.btn-info {
+  background-color: $pinky;
+  border-color: $pinky;
+  transition: ease 0.3s;
+  &:hover {
+    background-color: $pinky;
+    border-color: $pinky;
+    filter: brightness(0.8);
+    transition: ease 0.3s;
+  }
+}
+
 .btn {
   width: 130px;
   color: white;
@@ -12,7 +26,7 @@
 
 .order-buttons {
   color: white;
-  background-color: rgb(243, 156, 199);
+  background-color: $pinky;
   padding: 8px 12px;
   border-radius: 50px;
   margin-left: 12px;
