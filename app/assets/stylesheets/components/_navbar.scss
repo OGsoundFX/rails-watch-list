@@ -1,3 +1,5 @@
+$light-pink: #fff2fe;
+
 .navbar {
   position: fixed;
   width: 100%;
@@ -5,7 +7,7 @@
 
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background-color: $light-pink;
 }
 
 .navbar-lewagon .navbar-collapse {
