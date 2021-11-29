@@ -8,7 +8,10 @@ const options = {
 };
 
 const initTyped = () => {
-  new Typed('.typed-js', options);
+  const typed = document.querySelector(".typed-js")
+  if (typed) {
+    new Typed('.typed-js', options);
+  }
 }
 
 // const initTyped = () => {
