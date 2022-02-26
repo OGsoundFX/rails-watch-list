@@ -46,7 +46,6 @@ class MoviesController < ApplicationController
     else
       if params[:query] == "" || !params[:query].present?
         if params[:order] == "alpha"
-          raise
           if params[:type] == "default" || params[:type] == "title_desc"
             @movies = policy_scope(Movie).order(title: :asc)
             @order = "title_asc"
