@@ -3,12 +3,22 @@ import consumer from "../channels/consumer";
 
 export default class extends Controller {
   static values = { chatroomId: Number }
+  static targets = ["form", "messages"]
 
-  // connect() {
-  //   this.channel = consumer.subscriptions.create(
-  //     { channel: "ChatroomChannel", id: this.chatroomIdValue },
-  //     { received: data => this.element.insertAdjacentHTML("beforeend", data) }
-  //   )
-  //   console.log(`Subscribe to the chatroom with the id ${this.chatroomIdValue}.`);
-  // }
+  connect() {
+    this.channel = consumer.subscriptions.create(
+      { channel: "ChatroomChannel", id: this.chatroomIdValue },
+      { received: data => this.#insertMessageScrollDownAndResetForm(data) }
+    )
+  }
+  #insertMessageScrollDownAndResetForm(data) {
+    this.messagesTarget.insertAdjacentHTML("beforeend", data)
+    this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
+    this.formTarget.reset()
+  }
+  submit(event) {
+    if (event.keyCode === 13) {
+      this.formTarget.submit()
+    }
+  }
 }
