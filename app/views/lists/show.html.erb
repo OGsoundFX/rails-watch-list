@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @list.photo.url %>);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @list.movies.first.poster_url %>);">
   <div class="container">
     <h1><%= @list.name%></h1>
     <h3 class="typed-js"></h3>
@@ -22,10 +22,19 @@
   <% end %>
   <% if !@list.movies.empty? %>
     <ul>
-      <% @list.movies.each do |movie| %>
-        <%= movie.title %>
-        <%= image_tag movie.poster_url, style: 'width: 200px'%>
-      <% end %>
+      <div class="row mt-5">
+        <% @list.movies.each do |movie| %>
+          <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="<%= movie.poster_url %>" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title"><%= movie.title %></h5>
+                <p class="card-text"><%= movie.overview %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </ul>
   <% end %>
 </div>
