@@ -15,11 +15,22 @@
       <%= link_to "Back", root_path, class: "btn btn-info" %>
     </div>
   </div>
-  <%= simple_form_for [@list, @bookmark] do |f| %>
-    <%= f.association :movie, as: :select2, input_html: { class: "drop-down"} %>
-    <%= f.input :comment %>
-    <%= f.submit "Add movie" %>
-  <% end %>
+  <div class="list-forms-grid">
+    <div>
+      <%= simple_form_for [@list, @bookmark] do |f| %>
+        <%= f.association :movie, as: :select2, input_html: { class: "drop-down"} %>
+        <%= f.input :comment %>
+        <%= f.submit "Add movie" %>
+      <% end %>
+    </div>
+    <div class="review-form">
+      <%= simple_form_for [@list, @review] do |f| %>
+        <%= f.input :rating, as: :select, collection: (1..5), input_html: { class: "drop-down"} %>
+        <%= f.input :comment %>
+        <%= f.submit "Add review" %>
+      <% end %>
+    </div>
+  </div>
   <% if !@list.movies.empty? %>
     <ul>
       <div class="row mt-5">

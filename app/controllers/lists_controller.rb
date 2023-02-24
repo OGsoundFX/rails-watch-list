@@ -9,6 +9,7 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     @bookmark = Bookmark.new
     @movies = Movie.all
+    @review = Review.new
     authorize @list
   end
 

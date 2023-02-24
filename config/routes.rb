@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :movies, only: [:index, :show, :new, :create]
   resources :lists do
     resources :bookmarks, only: [:new, :create]
+    resources :reviews, only: [:new, :create]
   end
   resources :video_clubs, only: [:index, :show]
   resources :chatrooms, only: [:show] do
