@@ -50,7 +50,7 @@ gem 'rspec-rails', group: [ :test ]
 gem 'rails-controller-testing', group: [ :test ]
 
 gem "autoprefixer-rails", "10.2.5"
-gem "font-awesome-sass", "~> 5.12.0"
+gem "font-awesome-sass"
 gem "simple_form"
 gem 'faker'
 gem 'dotenv-rails', groups: [:development, :test]
