@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @list.movies.first.poster_url %>);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @list.movies.empty? ? 'https://res.cloudinary.com/dk9a86uhu/image/upload/v1603980704/carousel/caroussel1_xu8m7b.jpg' : @list.movies.first.poster_url %>);">
   <div class="container">
     <h1><%= @list.name%></h1>
     <h3 class="typed-js"></h3>
