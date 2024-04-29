@@ -12,7 +12,9 @@
       <% end %>
     </div>
     <div>
-      <%= link_to "Back", root_path, class: "btn btn-info" %>
+      <%= link_to "Lists", root_path, class: "btn btn-info" %>
+      <%= link_to "Movies", movies_path, class: "btn btn-info" %>
+      <%= link_to "Back", request.referer || root_path, class: "btn btn-info" %>
     </div>
   </div>
   <%= simple_form_for [@list, @bookmark] do |f| %>
