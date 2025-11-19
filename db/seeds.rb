@@ -1,5 +1,6 @@
 # Adding all the movies from the TMDB API
 require "open-uri"
+require "json"
 
 Bookmark.destroy_all
 Movie.destroy_all
@@ -15,12 +16,13 @@ puts "#{initial_user.username} is present in Database"
 api_key = ENV["TMDB_API_KEY"]
 url = "https://api.themoviedb.org/3/movie/top_rated?api_key=#{api_key}"
 base_poster_url = "https://image.tmdb.org/t/p/original"
-number_of_files = JSON.parse(open(url).read)['total_pages']
+response = URI.open(url).read
+number_of_files = JSON.parse(response)["total_pages"]
 
 # Creating all the movies
 n = 1
 500.times do
-  JSON.parse(open("#{url}&page=#{n}").read)['results'].each do |movie|
+  JSON.parse(URI.open("#{url}&page=#{n}").read)['results'].each do |movie|
     Movie.create(
       title: movie['title'],
       overview: movie['overview'],
