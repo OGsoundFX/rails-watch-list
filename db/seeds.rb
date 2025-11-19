@@ -1,4 +1,5 @@
 # Adding all the movies from the TMDB API
+require "open-uri"
 
 Bookmark.destroy_all
 Movie.destroy_all
